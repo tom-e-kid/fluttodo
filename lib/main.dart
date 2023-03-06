@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'screens/home.dart';
 import 'utils/logger.dart';
+import 'widgets/screens/home.dart';
 
 void main() async {
   runApp(

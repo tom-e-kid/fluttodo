@@ -2,16 +2,23 @@ import 'package:flutter/material.dart';
 
 typedef SubmitCallback = bool Function(String text);
 
-class InputForm extends StatefulWidget {
-  const InputForm({Key? key, required this.onSubmit}) : super(key: key);
+class TaskInputForm extends StatefulWidget {
+  const TaskInputForm({
+    Key? key,
+    required this.onSubmit,
+    this.placeholder = '',
+    this.initialText,
+  }) : super(key: key);
 
   final SubmitCallback onSubmit;
+  final String? initialText;
+  final String? placeholder;
 
   @override
-  State<InputForm> createState() => _InputFormState();
+  State<TaskInputForm> createState() => _TaskInputFormState();
 }
 
-class _InputFormState extends State<InputForm> {
+class _TaskInputFormState extends State<TaskInputForm> {
   final _formKey = GlobalKey<FormState>();
 
   late final TextEditingController _inputController;
@@ -20,7 +27,7 @@ class _InputFormState extends State<InputForm> {
 
   @override
   void initState() {
-    _inputController = TextEditingController();
+    _inputController = TextEditingController(text: widget.initialText);
     super.initState();
   }
 
@@ -41,17 +48,16 @@ class _InputFormState extends State<InputForm> {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
     return SizedBox(
-      width: width * 0.5,
+      width: 300,
       child: Form(
         key: _formKey,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             TextFormField(
-                decoration: const InputDecoration(
-                  labelText: "Input Task",
+                decoration: InputDecoration(
+                  labelText: widget.placeholder,
                 ),
                 textInputAction: TextInputAction.next,
                 autofocus: true,
