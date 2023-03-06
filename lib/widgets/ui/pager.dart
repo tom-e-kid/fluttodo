@@ -7,7 +7,7 @@ typedef PageItemBuilder<T> = Widget Function(
 
 class Pager<T> extends StatelessWidget {
   const Pager({
-    required Key key,
+    Key? key,
     required this.items,
     required this.builder,
     this.onRefresh,

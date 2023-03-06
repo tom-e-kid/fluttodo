@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fluttodo/utils/ui_key.dart';
 
 import '../../models/task.dart';
 import '../../states/tasks.dart';
@@ -39,7 +38,6 @@ class Home extends ConsumerWidget {
     final value = ref.watch(tasksProvider);
     return value.when(
       data: (tasks) => Pager(
-        key: Key(uiKey()),
         onRefresh: () async {
           ref.read(tasksProvider.notifier).refresh();
         },
