@@ -11,11 +11,13 @@ class Pager<T> extends StatelessWidget {
     required this.items,
     required this.builder,
     this.onRefresh,
+    this.dividerHeight,
   }) : super(key: key);
 
   final List<T> items;
   final PageItemBuilder<T> builder;
   final RefreshCallback? onRefresh;
+  final double? dividerHeight;
 
   Widget buildRefreshableList(BuildContext context, List<T> items) {
     return RefreshIndicator(
@@ -36,9 +38,13 @@ class Pager<T> extends StatelessWidget {
         return builder(context, item);
       },
       separatorBuilder: (context, index) {
-        return const Divider(
-          height: 0.5,
-        );
+        return dividerHeight != null
+            ? Divider(
+                height: dividerHeight,
+              )
+            : const SizedBox(
+                height: 0,
+              );
       },
     );
   }

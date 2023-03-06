@@ -21,8 +21,16 @@ class Bootstrap extends ConsumerWidget {
     return MaterialApp(
       title: 'Fluttodo',
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        useMaterial3: true,
+        colorSchemeSeed: Colors.green,
+        brightness: Brightness.light,
       ),
+      darkTheme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: Colors.green,
+        brightness: Brightness.dark,
+      ),
+      themeMode: ThemeMode.system,
       home: const HomeScreen(),
     );
   }

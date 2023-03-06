@@ -19,26 +19,35 @@ class TaskCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 0.5,
-      child: ListTile(
-        leading: Checkbox(
-          shape: const CircleBorder(),
-          onChanged: (flag) {
-            if (flag != null) {
-              onComplete(flag);
-            }
-          },
-          value: task.completed,
-        ),
-        title: Text(
-          task.text,
-          style: const TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w100,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: Card(
+        elevation: 2,
+        color: Theme.of(context).colorScheme.surfaceVariant,
+        // shape: RoundedRectangleBorder(
+        //   side: BorderSide(
+        //     color: Theme.of(context).colorScheme.outlineVariant,
+        //   ),
+        //   borderRadius: const BorderRadius.all(Radius.circular(16)),
+        // ),
+        child: ListTile(
+          leading: Checkbox(
+            shape: const CircleBorder(),
+            onChanged: (flag) {
+              if (flag != null) {
+                onComplete(flag);
+              }
+            },
+            value: task.completed,
           ),
+          title: Text(
+            task.text,
+            style: const TextStyle(
+              fontSize: 20,
+            ),
+          ),
+          onTap: onSelect,
         ),
-        onTap: onSelect,
       ),
     );
   }

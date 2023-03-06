@@ -75,7 +75,7 @@ class _TaskInputFormState extends State<TaskInputForm> {
                 }),
             Padding(
               padding: const EdgeInsets.only(top: 16),
-              child: ElevatedButton(
+              child: FilledButton(
                 focusNode: _submitFocus,
                 onPressed: () {
                   submit();
