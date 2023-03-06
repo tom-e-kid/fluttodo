@@ -28,6 +28,7 @@ class Pager<T> extends StatelessWidget {
 
   Widget buildList(BuildContext context, List<T> items) {
     return ListView.separated(
+      physics: const AlwaysScrollableScrollPhysics(),
       padding: const EdgeInsets.symmetric(
         vertical: 8,
         horizontal: 0,
