@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -101,6 +102,19 @@ class HomeScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Fluttodo'),
+        actions: kIsWeb
+            ? [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: FilledButton.tonal(
+                    onPressed: () {
+                      ref.read(tasksProvider.notifier).refresh();
+                    },
+                    child: const Icon(Icons.refresh),
+                  ),
+                ),
+              ]
+            : null,
       ),
       body: const SafeArea(
         child: Home(),
