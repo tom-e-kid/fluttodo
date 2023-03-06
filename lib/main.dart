@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -11,6 +13,14 @@ void main() async {
       child: const Bootstrap(),
     ),
   );
+}
+
+class ScrollBehavior extends MaterialScrollBehavior {
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+        PointerDeviceKind.touch,
+        // PointerDeviceKind.mouse, // activate dragging on web if you want.
+      };
 }
 
 class Bootstrap extends ConsumerWidget {
@@ -31,6 +41,7 @@ class Bootstrap extends ConsumerWidget {
         brightness: Brightness.dark,
       ),
       themeMode: ThemeMode.system,
+      scrollBehavior: ScrollBehavior(),
       home: const HomeScreen(),
     );
   }
